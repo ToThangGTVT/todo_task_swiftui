@@ -12,6 +12,7 @@ class TaskViewModel: ObservableObject {
         
     @ObservedObject var service: NetworkManager
     @Published var value: String = ""
+    @Published var isLoginSuccess: Bool = false
     
     init(service: NetworkManager) {
         self.service = service
@@ -26,10 +27,13 @@ class TaskViewModel: ObservableObject {
         }
     }
     
-    func callApiLogin() {
-        let loginRequest = LoginRequest(username: "guest", password: "guestguest")
-        service.post(url: Constant.BASE_URL + "api/login", body: loginRequest, type: LoginResponse.self) { [ weak self ] res in
-            print("xxxxxx")
+    func callApiLogin(username: String, password: String) {
+        let loginRequest = LoginRequest(username: username, password: password)
+        service.post(url: Constant.BASE_URL + "/api-login", body: loginRequest, type: LoginResponse.self) { [ weak self ] res in
+            DispatchQueue.main.async {
+                self?.isLoginSuccess = true
+            }
+            
         }
     }
 }

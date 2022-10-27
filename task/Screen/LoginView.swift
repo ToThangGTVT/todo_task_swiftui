@@ -13,7 +13,7 @@ struct LoginView: View {
     @EnvironmentObject var viewModel: TaskViewModel
     
     func actionLogin() {
-        viewModel.callApiLogin()
+        viewModel.callApiLogin(username: username, password: password)
     }
     
     var body: some View {
@@ -37,8 +37,8 @@ struct LoginView: View {
     }
 }
 
-struct LoginView_Previews: PreviewProvider {
-    static var previews: some View {
-        LoginView()
-    }
-}
+//struct LoginView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        LoginView()
+//    }
+//}
