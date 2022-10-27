@@ -10,4 +10,5 @@ import Foundation
 class Constant {
     
     public static var BASE_URL: String = "https://todo.tothang.name.vn/"
+    public static var TOKEN: String = "TOKEN"
 }

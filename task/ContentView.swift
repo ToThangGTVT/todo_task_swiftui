@@ -9,10 +9,14 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @EnvironmentObject var viewModel: TaskViewModel
+    @EnvironmentObject var viewModel: LoginViewModel
     
     var body: some View {
-        LoginView().environmentObject(viewModel)
+        if UserDefaultManager.shared.getToken() != nil {
+            HomeView()
+        } else {
+            LoginView().environmentObject(viewModel)
+        }
     }
 }
 
