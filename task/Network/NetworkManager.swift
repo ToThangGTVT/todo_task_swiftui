@@ -9,20 +9,25 @@ import Foundation
 
 class NetworkManager: ObservableObject {
     
-    func post(url: String, body: AnyObject, completionHandle: @escaping (Data) -> Void) {
+    func post<T: Decodable>(url: String, body: Codable, type: T.Type, completionHandle: @escaping (T) -> Void) {
+        let decoder = JSONDecoder()
         var request = URLRequest(url: URL(string: url)!)
         request.httpMethod = "POST"
-        request.httpBody = try? JSONSerialization.data(withJSONObject: body, options: [])
+        request.httpBody = try? JSONEncoder().encode(body)
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         
         let session = URLSession.shared
         let task = session.dataTask(with: request, completionHandler: { data, response, error -> Void in
-            print(response!)
+            print(response)
             do {
-                let json = try JSONSerialization.jsonObject(with: data!) as! Dictionary<String, AnyObject>
-                print(json)
+                let json = try JSONSerialization.jsonObject(with: data!) as! NSDictionary
+                guard let response = response else { return  }
+                guard let httpResponse = response as? HTTPURLResponse else { return  }
                 guard let data = data else { return  }
-                completionHandle(data)
+                let result = try decoder.decode(type.self, from: data)
+                if (200...299).contains(httpResponse.statusCode) {
+                    completionHandle(result)
+                }
             } catch {
                 print("error")
             }

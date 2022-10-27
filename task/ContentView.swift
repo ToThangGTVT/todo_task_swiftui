@@ -12,7 +12,7 @@ struct ContentView: View {
     @EnvironmentObject var viewModel: TaskViewModel
     
     var body: some View {
-        LoginView()
+        LoginView().environmentObject(viewModel)
     }
 }
 

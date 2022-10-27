@@ -26,10 +26,10 @@ class TaskViewModel: ObservableObject {
         }
     }
     
-    
     func callApiLogin() {
-        service.post(url: Constant.BASE_URL, body: nil) { [ weak self ] res in
-            
+        let loginRequest = LoginRequest(username: "guest", password: "guestguest")
+        service.post(url: Constant.BASE_URL + "api/login", body: loginRequest, type: LoginResponse.self) { [ weak self ] res in
+            print("xxxxxx")
         }
     }
 }

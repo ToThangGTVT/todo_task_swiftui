@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		37580277290A86E30007B7EB /* LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37580276290A86E30007B7EB /* LoginRequest.swift */; };
+		3758027B290A8D320007B7EB /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3758027A290A8D320007B7EB /* LoginResponse.swift */; };
 		864EAAC32909895D00CD979D /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864EAAC22909895D00CD979D /* LoginView.swift */; };
 		864EAAC62909961A00CD979D /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864EAAC52909961A00CD979D /* Constant.swift */; };
 		8688902E2903762F00D742D0 /* RandomDogModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8688902D2903762F00D742D0 /* RandomDogModel.swift */; };
@@ -39,6 +41,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		37580276290A86E30007B7EB /* LoginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequest.swift; sourceTree = "<group>"; };
+		37580278290A8BC90007B7EB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		3758027A290A8D320007B7EB /* LoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
 		864EAAC22909895D00CD979D /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		864EAAC52909961A00CD979D /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		8688902D2903762F00D742D0 /* RandomDogModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomDogModel.swift; sourceTree = "<group>"; };
@@ -81,6 +86,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		37580275290A86D00007B7EB /* Request */ = {
+			isa = PBXGroup;
+			children = (
+				37580276290A86E30007B7EB /* LoginRequest.swift */,
+			);
+			name = Request;
+			sourceTree = "<group>";
+		};
+		37580279290A8D1B0007B7EB /* Response */ = {
+			isa = PBXGroup;
+			children = (
+				3758027A290A8D320007B7EB /* LoginResponse.swift */,
+			);
+			name = Response;
+			sourceTree = "<group>";
+		};
 		864EAAC12909894200CD979D /* Screen */ = {
 			isa = PBXGroup;
 			children = (
@@ -100,6 +121,8 @@
 		8688902C2903760A00D742D0 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				37580279290A8D1B0007B7EB /* Response */,
+				37580275290A86D00007B7EB /* Request */,
 				8688902D2903762F00D742D0 /* RandomDogModel.swift */,
 			);
 			name = Model;
@@ -128,6 +151,7 @@
 		86BB865A2900451B0054D884 /* task */ = {
 			isa = PBXGroup;
 			children = (
+				37580278290A8BC90007B7EB /* Info.plist */,
 				864EAAC42909951900CD979D /* Utils */,
 				864EAAC12909894200CD979D /* Screen */,
 				8688902C2903760A00D742D0 /* Model */,
@@ -322,11 +346,13 @@
 			files = (
 				864EAAC62909961A00CD979D /* Constant.swift in Sources */,
 				864EAAC32909895D00CD979D /* LoginView.swift in Sources */,
+				3758027B290A8D320007B7EB /* LoginResponse.swift in Sources */,
 				86BB8688290047390054D884 /* NetworkManager.swift in Sources */,
 				86BB868B29004CB90054D884 /* TaskViewModel.swift in Sources */,
 				8688902E2903762F00D742D0 /* RandomDogModel.swift in Sources */,
 				86BB865E2900451B0054D884 /* ContentView.swift in Sources */,
 				86BB865C2900451B0054D884 /* taskApp.swift in Sources */,
+				37580277290A86E30007B7EB /* LoginRequest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -489,6 +515,7 @@
 				DEVELOPMENT_TEAM = W8P627TT2F;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = task/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -520,6 +547,7 @@
 				DEVELOPMENT_TEAM = W8P627TT2F;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = task/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
