@@ -16,13 +16,13 @@ struct HomeView: View {
     }
     
     var body: some View {
-        NavigationView {
+        GeometryReader {_ in 
             VStack {
                 Text("Hello, World!")
                 Divider()
                 List {
-                    ForEach(0 ..< noteViewModel.listNote.count) { i in
-                        Text("xx")
+                    ForEach(0 ..< noteViewModel.listNote.count,  id: \.self) { i in
+                        ItemCellNoteList(title: noteViewModel.listNote[i].title ?? "", isFavorite: noteViewModel.listNote[i].isFavorite ?? false)
                     }
                 }
             }
