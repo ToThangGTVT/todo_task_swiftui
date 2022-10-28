@@ -34,18 +34,21 @@ class NetworkManager: ObservableObject {
         task.resume()
     }
     
-    func callApiGet<T: Decodable>(url: String, type: T.Type, completionHandle: @escaping (T) -> Void) {
+    func callApiGet<T: Decodable>(url: String, returnType: T.Type, completionHandle: @escaping (T) -> Void) {
         let decoder = JSONDecoder()
         var request = URLRequest(url: URL(string: url)!)
         request.httpMethod = "GET"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        if let token = UserDefaultManager.shared.getToken() {
+            request.addValue(token, forHTTPHeaderField: "cookie")
+        }
         let session = URLSession.shared
         let task = session.dataTask(with: request, completionHandler: { data, response, error -> Void in
             do {
                 guard let response = response else { return  }
                 guard let httpResponse = response as? HTTPURLResponse else { return  }
                 guard let data = data else { return  }
-                let people = try decoder.decode(type.self, from: data)
+                let people = try decoder.decode(returnType.self, from: data)
                 if (200...299).contains(httpResponse.statusCode) {
                     completionHandle(people)
                 }

@@ -10,18 +10,13 @@ import SwiftUI
 import RxCocoa
 import RxSwift
 
-class LoginViewModel: ObservableObject {
+class LoginViewModel: BaseViewModel {
         
-    @ObservedObject var service: NetworkManager
     @Published var value: String = ""
     @Published var isPresentedHome: Bool = false
     
-    init(service: NetworkManager) {
-        self.service = service
-    }
-    
     func callApiDogRandom() {
-        service.callApiGet(url: "https://dog.ceo/api/breeds/image/random", type: RandomDogModel.self) { [ weak self ] res in
+        service.callApiGet(url: "https://dog.ceo/api/breeds/image/random", returnType: RandomDogModel.self) { [ weak self ] res in
             print(res.message)
             DispatchQueue.main.async {
                 self?.value = res.message

@@ -11,10 +11,14 @@ import SwiftUI
 struct taskApp: App {
     var body: some Scene {
         
-        let taskViewModel = LoginViewModel(service: NetworkManager())
+        let networkManager = NetworkManager()
+        let taskViewModel = LoginViewModel(service: networkManager)
+        let noteViewModel = NoteViewModel(service: networkManager)
         
         WindowGroup {
-            ContentView().environmentObject(taskViewModel).environmentObject(taskViewModel)
+            ContentView()
+                .environmentObject(taskViewModel)
+                .environmentObject(noteViewModel)
         }
     }
 }

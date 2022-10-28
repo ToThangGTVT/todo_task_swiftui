@@ -16,7 +16,6 @@ class UserDefaultManager {
     }
 
     func getToken() -> String? {
-        print("token::::\(UserDefaults.standard.string(forKey: Constant.TOKEN))")
         return UserDefaults.standard.string(forKey: Constant.TOKEN)
     }
 

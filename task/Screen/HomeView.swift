@@ -8,13 +8,28 @@
 import SwiftUI
 
 struct HomeView: View {
+    
+    @EnvironmentObject var noteViewModel: NoteViewModel
+    
+    func fetchListNote() {
+        noteViewModel.getListNote()
+    }
+    
     var body: some View {
-        VStack {
-            Text("Hello, World!")
-            Divider()
-            Spacer()
+        NavigationView {
+            VStack {
+                Text("Hello, World!")
+                Divider()
+                List {
+                    ForEach(0 ..< noteViewModel.listNote.count) { i in
+                        Text("xx")
+                    }
+                }
+            }
+            .background(Color.purple)
+        }.onAppear {
+            fetchListNote()
         }
-        .background(Color.purple)
     }
 }
 
