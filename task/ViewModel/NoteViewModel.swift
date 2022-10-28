@@ -19,4 +19,8 @@ class NoteViewModel: BaseViewModel {
             }
         }
     }
+    
+    func setStar() {
+        
+    }
 }
