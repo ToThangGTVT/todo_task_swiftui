@@ -26,7 +26,7 @@ class LoginViewModel: BaseViewModel {
     
     func callApiLogin(username: String, password: String) {
         let loginRequest = LoginRequest(username: username, password: password)
-        service.post(url: Constant.BASE_URL + "/api-login", body: loginRequest, type: LoginResponse.self) { [ weak self ] res in
+        service.post(url: Constant.BASE_URL + "/api-login", body: loginRequest, typeResponse: LoginResponse.self) { [ weak self ] res in
             DispatchQueue.main.async {
                 self?.isPresentedHome = true
                 guard var token = res.token else { return }

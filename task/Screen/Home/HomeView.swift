@@ -10,13 +10,14 @@ import SwiftUI
 struct HomeView: View {
     
     @EnvironmentObject var noteViewModel: NoteViewModel
+    @State var isCreateNotePress: Bool = false
     
     func fetchListNote() {
         noteViewModel.getListNote()
     }
     
     func createNote() {
-        
+        isCreateNotePress = true
     }
     
     var body: some View {
@@ -32,12 +33,13 @@ struct HomeView: View {
                     }
                     Button(action: {
                         createNote()
-                        
                     }){
-                        ZStack(alignment: Alignment(horizontal: .center, vertical: .center)) {
-                            Text("Tạo note").foregroundColor(.white)
-                        }
-                    }.listRowBackground(Color.blue)
+                        Text("Tạo note").foregroundColor(.white).frame(maxWidth: .infinity, alignment: .center)
+                    }.listRowBackground(Color.blue).sheet(isPresented: $isCreateNotePress, onDismiss: {
+                        fetchListNote()
+                    }) {
+                        NoteCreateView()
+                    }
                 }
                 
             }

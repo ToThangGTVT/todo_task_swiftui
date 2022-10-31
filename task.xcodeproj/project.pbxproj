@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		37580277290A86E30007B7EB /* LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37580276290A86E30007B7EB /* LoginRequest.swift */; };
 		3758027B290A8D320007B7EB /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3758027A290A8D320007B7EB /* LoginResponse.swift */; };
+		37D3FA55290BB9340017C7A1 /* NoteCreateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D3FA54290BB9340017C7A1 /* NoteCreateView.swift */; };
+		37D3FA60290BC33E0017C7A1 /* MarkupEditor in Frameworks */ = {isa = PBXBuildFile; productRef = 37D3FA5F290BC33E0017C7A1 /* MarkupEditor */; };
+		37D3FA62290BD5730017C7A1 /* NoteCreateRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D3FA61290BD5730017C7A1 /* NoteCreateRequest.swift */; };
+		37D3FA64290BD7EC0017C7A1 /* NoteCreateResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D3FA63290BD7EC0017C7A1 /* NoteCreateResponse.swift */; };
 		37EEFF46290B6E4500A36989 /* ItemNoteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37EEFF45290B6E4500A36989 /* ItemNoteModel.swift */; };
 		37EEFF48290B6EA700A36989 /* NoteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37EEFF47290B6EA700A36989 /* NoteViewModel.swift */; };
 		37EEFF4A290B6F0F00A36989 /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37EEFF49290B6F0F00A36989 /* BaseViewModel.swift */; };
@@ -52,6 +56,9 @@
 		37580276290A86E30007B7EB /* LoginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequest.swift; sourceTree = "<group>"; };
 		37580278290A8BC90007B7EB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		3758027A290A8D320007B7EB /* LoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
+		37D3FA54290BB9340017C7A1 /* NoteCreateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteCreateView.swift; sourceTree = "<group>"; };
+		37D3FA61290BD5730017C7A1 /* NoteCreateRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteCreateRequest.swift; sourceTree = "<group>"; };
+		37D3FA63290BD7EC0017C7A1 /* NoteCreateResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteCreateResponse.swift; sourceTree = "<group>"; };
 		37EEFF45290B6E4500A36989 /* ItemNoteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemNoteModel.swift; sourceTree = "<group>"; };
 		37EEFF47290B6EA700A36989 /* NoteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteViewModel.swift; sourceTree = "<group>"; };
 		37EEFF49290B6F0F00A36989 /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
@@ -85,6 +92,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F1947C6687B970AFB455EBFD /* Pods_task.framework in Frameworks */,
+				37D3FA60290BC33E0017C7A1 /* MarkupEditor in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -111,6 +119,7 @@
 			isa = PBXGroup;
 			children = (
 				37580276290A86E30007B7EB /* LoginRequest.swift */,
+				37D3FA61290BD5730017C7A1 /* NoteCreateRequest.swift */,
 			);
 			name = Request;
 			path = ..;
@@ -121,9 +130,18 @@
 			children = (
 				3758027A290A8D320007B7EB /* LoginResponse.swift */,
 				37EEFF45290B6E4500A36989 /* ItemNoteModel.swift */,
+				37D3FA63290BD7EC0017C7A1 /* NoteCreateResponse.swift */,
 			);
 			name = Response;
 			path = ..;
+			sourceTree = "<group>";
+		};
+		37D3FA53290BB9200017C7A1 /* NoteCreate */ = {
+			isa = PBXGroup;
+			children = (
+				37D3FA54290BB9340017C7A1 /* NoteCreateView.swift */,
+			);
+			path = NoteCreate;
 			sourceTree = "<group>";
 		};
 		37EEFF44290B6D3C00A36989 /* Model */ = {
@@ -162,6 +180,7 @@
 		864EAAC12909894200CD979D /* Screen */ = {
 			isa = PBXGroup;
 			children = (
+				37D3FA53290BB9200017C7A1 /* NoteCreate */,
 				867D1574290B806F00EFC1EE /* Home */,
 				867D1573290B806300EFC1EE /* Login */,
 			);
@@ -283,6 +302,9 @@
 			dependencies = (
 			);
 			name = task;
+			packageProductDependencies = (
+				37D3FA5F290BC33E0017C7A1 /* MarkupEditor */,
+			);
 			productName = task;
 			productReference = 86BB86582900451B0054D884 /* task.app */;
 			productType = "com.apple.product-type.application";
@@ -358,6 +380,9 @@
 				Base,
 			);
 			mainGroup = 86BB864F2900451A0054D884;
+			packageReferences = (
+				37D3FA5E290BC33E0017C7A1 /* XCRemoteSwiftPackageReference "MarkupEditor" */,
+			);
 			productRefGroup = 86BB86592900451B0054D884 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -505,13 +530,16 @@
 			files = (
 				864EAAC62909961A00CD979D /* Constant.swift in Sources */,
 				864EAAC32909895D00CD979D /* LoginView.swift in Sources */,
+				37D3FA55290BB9340017C7A1 /* NoteCreateView.swift in Sources */,
 				867D1576290B80B000EFC1EE /* ItemCellNoteList.swift in Sources */,
 				37EEFF48290B6EA700A36989 /* NoteViewModel.swift in Sources */,
 				37EEFF4A290B6F0F00A36989 /* BaseViewModel.swift in Sources */,
 				3758027B290A8D320007B7EB /* LoginResponse.swift in Sources */,
 				861F36D9290AD3E100979DF3 /* HomeView.swift in Sources */,
+				37D3FA64290BD7EC0017C7A1 /* NoteCreateResponse.swift in Sources */,
 				37EEFF46290B6E4500A36989 /* ItemNoteModel.swift in Sources */,
 				86BB8688290047390054D884 /* NetworkManager.swift in Sources */,
+				37D3FA62290BD5730017C7A1 /* NoteCreateRequest.swift in Sources */,
 				86BB868B29004CB90054D884 /* LoginViewModel.swift in Sources */,
 				8688902E2903762F00D742D0 /* RandomDogModel.swift in Sources */,
 				861F36DB290AD75800979DF3 /* UserDefaultManager.swift in Sources */,
@@ -847,6 +875,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		37D3FA5E290BC33E0017C7A1 /* XCRemoteSwiftPackageReference "MarkupEditor" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/stevengharris/MarkupEditor";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.5.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		37D3FA5F290BC33E0017C7A1 /* MarkupEditor */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 37D3FA5E290BC33E0017C7A1 /* XCRemoteSwiftPackageReference "MarkupEditor" */;
+			productName = MarkupEditor;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 86BB86502900451A0054D884 /* Project object */;
 }

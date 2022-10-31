@@ -23,4 +23,13 @@ class NoteViewModel: BaseViewModel {
     func setStar() {
         
     }
+    
+    func saveNote(title: String, content: String) {
+        var body = NoteCreateRequest()
+        body.content = content
+        body.title = title
+        service.post(url: Constant.BASE_URL + "api/note/save", body: body, typeResponse: NoteCreateResponse.self) { val in
+            print("sssssss::::::::::")
+        }
+    }
 }
