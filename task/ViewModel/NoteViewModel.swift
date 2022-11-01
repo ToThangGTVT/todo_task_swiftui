@@ -45,6 +45,7 @@ class NoteViewModel: BaseViewModel {
         body.title = title
         if let isFavorite = isFavorite {
             body.isFavorite = isFavorite
+            print(isFavorite)
         }
         if let title = title {
             body.title = title
@@ -58,8 +59,8 @@ class NoteViewModel: BaseViewModel {
         if let isFirstDisplay = isFirstDisplay {
             body.isFirstDisplay = isFirstDisplay
         }
-        
-        service.post(url: Constant.BASE_URL + "api/note/save", body: body, typeResponse: NoteCreateResponse.self) { val in
+        print(body)
+        service.put(url: Constant.BASE_URL + "api/note/update", body: body, typeResponse: NoteCreateResponse.self) { val in
             DispatchQueue.main.async {
                 completed(val)
             }

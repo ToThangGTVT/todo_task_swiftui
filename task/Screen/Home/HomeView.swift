@@ -53,6 +53,8 @@ struct HomeView: View {
                     Text("add")
                 }
             }
+        }.refreshable {
+            noteViewModel.getListNote()
         }
     }
 }

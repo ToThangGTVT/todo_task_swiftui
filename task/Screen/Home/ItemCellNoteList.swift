@@ -18,7 +18,7 @@ struct ItemCellNoteList: View {
     init(id: Int, title: String, isFavorite: Bool) {
         self.id = id
         self.title = title
-        self.isFavorite = isFavorite
+        _isFavorite = State(initialValue: isFavorite)
     }
     
     var body: some View {
@@ -30,7 +30,7 @@ struct ItemCellNoteList: View {
                 Text(title)
             }.buttonStyle(BorderlessButtonStyle())
             Spacer()
-            if isFavorite {
+            if $isFavorite.wrappedValue {
                 Button(action: {
                     noteViewModel.updateNote(id: id, isFavorite: false) { note in
                         isFavorite = note?.isFavorite ?? true
@@ -47,6 +47,8 @@ struct ItemCellNoteList: View {
                     Image(systemName: "star").foregroundColor(.gray)
                 }.buttonStyle(BorderlessButtonStyle())
             }
+        }.onAppear {
+            
         }
     }
 }
