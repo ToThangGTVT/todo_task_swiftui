@@ -11,6 +11,8 @@ class UserDefaultManager {
 
     static let shared = UserDefaultManager()
     
+    private init() { }
+    
     func saveToken(token: String) {
         UserDefaults.standard.set(token, forKey: Constant.TOKEN)
     }

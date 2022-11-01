@@ -9,17 +9,31 @@ import SwiftUI
 import MarkupEditor
 
 struct NoteCreateView: View {
+    @EnvironmentObject var noteViewModel: NoteViewModel
+    @Environment(\.presentationMode) var presentationMode
+    
+    @State private var idNote: Int = -1
     @State private var content: String = "<pre>Hello World</pre>"
     @State private var title: String = ""
-    @EnvironmentObject var noteViewModel: NoteViewModel
+    
+    // State dialog
+    @State private var isShowDialog: Bool = false
+    @State private var isShowCreateNoteDoneDialog: Bool = false
     
     func saveNote() {
-        noteViewModel.saveNote(title: title, content: content)
+        if title.isEmpty || content.isEmpty {
+            isShowDialog = true
+        } else {
+            noteViewModel.saveNote(title: title, content: content) {  id in
+                guard let id = id else { return }
+                idNote = id
+                isShowCreateNoteDoneDialog = true
+            }
+        }
     }
     
     init() {
         UITableView.appearance().sectionHeaderHeight = .zero
-        
     }
     
     
@@ -34,8 +48,28 @@ struct NoteCreateView: View {
                     Button(action: {
                         saveNote()
                     }) {
-                        Text("Save").foregroundColor(.white).frame(maxWidth: .infinity, alignment: .center)
-                    }.frame(height: 40.0).background(.blue).cornerRadius(8).padding([.leading, .trailing], 8)
+                        Text(idNote != -1 ? "Update" :"Save").foregroundColor(.white).frame(maxWidth: .infinity, alignment: .center)
+                    }.frame(height: 40.0).background(.blue)
+                        .cornerRadius(8)
+                        .padding([.leading, .trailing], 8)
+                        .alert("Error", isPresented: $isShowDialog, actions: {
+                            Button("OK", role: .cancel, action: {
+                                isShowDialog = false
+                            })
+                        }) {
+                            Text("Title and content must not empty!")
+                        }
+                        .alert("Success", isPresented: $isShowCreateNoteDoneDialog, actions: {
+                            Button("Close", role: .cancel, action: {
+                                isShowDialog = false
+                                self.presentationMode.wrappedValue.dismiss()
+                            })
+                            Button("Edit continue", role: .none, action: {
+                                isShowDialog = false
+                            })
+                        }) {
+                            Text("Create note done!")
+                        }
                     
                 }
             }.environment(\.defaultMinListRowHeight, 20) 

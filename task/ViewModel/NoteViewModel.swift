@@ -24,12 +24,45 @@ class NoteViewModel: BaseViewModel {
         
     }
     
-    func saveNote(title: String, content: String) {
+    func saveNote(title: String, content: String, completed: @escaping (_ id: Int?) -> Void) {
         var body = NoteCreateRequest()
         body.content = content
         body.title = title
         service.post(url: Constant.BASE_URL + "api/note/save", body: body, typeResponse: NoteCreateResponse.self) { val in
-            print("sssssss::::::::::")
+            DispatchQueue.main.async {
+                completed(val.id)
+            }
+        }
+    }
+    
+    func updateNote(id: Int, title: String? = nil, content: String? = nil, isFavorite: Bool? = nil,
+                    isFirstDisplay: Bool? = nil, isDelete: Bool? = nil,
+                    completed: @escaping (_ note: NoteCreateResponse?) -> Void) {
+ 
+        var body = NoteCreateRequest()
+        body.content = content
+        body.id = id
+        body.title = title
+        if let isFavorite = isFavorite {
+            body.isFavorite = isFavorite
+        }
+        if let title = title {
+            body.title = title
+        }
+        if let content = content {
+            body.content = content
+        }
+        if let isDelete = isDelete {
+            body.isDelete = isDelete
+        }
+        if let isFirstDisplay = isFirstDisplay {
+            body.isFirstDisplay = isFirstDisplay
+        }
+        
+        service.post(url: Constant.BASE_URL + "api/note/save", body: body, typeResponse: NoteCreateResponse.self) { val in
+            DispatchQueue.main.async {
+                completed(val)
+            }
         }
     }
 }

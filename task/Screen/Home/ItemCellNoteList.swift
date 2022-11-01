@@ -9,22 +9,43 @@ import SwiftUI
 
 struct ItemCellNoteList: View {
     
-    var title: String
-    var isFavorite: Bool
+    @EnvironmentObject var noteViewModel: NoteViewModel
     
-    init(title: String, isFavorite: Bool) {
+    var title: String
+    @State var isFavorite: Bool = false
+    var id: Int
+    
+    init(id: Int, title: String, isFavorite: Bool) {
+        self.id = id
         self.title = title
         self.isFavorite = isFavorite
     }
     
     var body: some View {
         HStack {
-            Text(title)
+            Button(action: {
+                print(title)
+                
+            }) {
+                Text(title)
+            }.buttonStyle(BorderlessButtonStyle())
             Spacer()
             if isFavorite {
-                Image(systemName: "star.fill").foregroundColor(.yellow)
+                Button(action: {
+                    noteViewModel.updateNote(id: id, isFavorite: false) { note in
+                        isFavorite = note?.isFavorite ?? true
+                    }
+                }) {
+                    Image(systemName: "star.fill").foregroundColor(.yellow)
+                }.buttonStyle(BorderlessButtonStyle())
             } else {
-                Image(systemName: "star").foregroundColor(.gray)
+                Button(action: {
+                    noteViewModel.updateNote(id: id, isFavorite: true) { note in
+                        isFavorite = note?.isFavorite ?? false
+                    }
+                }) {
+                    Image(systemName: "star").foregroundColor(.gray)
+                }.buttonStyle(BorderlessButtonStyle())
             }
         }
     }

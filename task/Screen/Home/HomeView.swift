@@ -21,14 +21,16 @@ struct HomeView: View {
     }
     
     var body: some View {
-        GeometryReader {_ in
+        NavigationView {
             VStack {
                 Text("Hello, World!")
                 Divider()
                 List {
                     Section(header: Text("Important tasks")) {
                         ForEach(0 ..< noteViewModel.listNote.count,  id: \.self) { i in
-                            ItemCellNoteList(title: noteViewModel.listNote[i].title ?? "", isFavorite: noteViewModel.listNote[i].isFavorite ?? false)
+                            ItemCellNoteList(id: noteViewModel.listNote[i].id ?? 0,
+                                             title: noteViewModel.listNote[i].title ?? "",
+                                             isFavorite: noteViewModel.listNote[i].isFavorite ?? false)
                         }
                     }
                     Button(action: {
@@ -41,12 +43,17 @@ struct HomeView: View {
                         NoteCreateView()
                     }
                 }
-                
             }
             .background(Color.purple)
         }.onAppear {
             fetchListNote()
-        }.navigationTitle(" tTSTSTS")
+        }.toolbar {
+            ToolbarItem(placement: ToolbarItemPlacement.principal) {
+                Button(action: {}) {
+                    Text("add")
+                }
+            }
+        }
     }
 }
 
