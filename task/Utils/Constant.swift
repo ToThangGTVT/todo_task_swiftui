@@ -9,6 +9,6 @@ import Foundation
 
 class Constant {
     
-    public static var BASE_URL: String = "http://localhost:8080/"
+    public static var BASE_URL: String = "https://todo.tothang.name.vn/"
     public static var TOKEN: String = "TOKEN"
 }
