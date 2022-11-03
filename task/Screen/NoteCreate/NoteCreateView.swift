@@ -45,31 +45,45 @@ struct NoteCreateView: View {
                 }.padding([.bottom], 0)
                 Section(header: Text("Tiêu đề ghi chú:") ) {
                     MarkupEditorView(html: $content).frame(height: geo.size.height - 250)
-                    Button(action: {
-                        saveNote()
-                    }) {
-                        Text(idNote != -1 ? "Update" :"Save").foregroundColor(.white).frame(maxWidth: .infinity, alignment: .center)
-                    }.frame(height: 40.0).background(.blue)
-                        .cornerRadius(8)
-                        .padding([.leading, .trailing], 8)
-                        .alert("Error", isPresented: $isShowDialog, actions: {
-                            Button("OK", role: .cancel, action: {
-                                isShowDialog = false
-                            })
+                    HStack {
+                        Button(action: {
+                            self.presentationMode.wrappedValue.dismiss()
                         }) {
-                            Text("Title and content must not empty!")
-                        }
-                        .alert("Success", isPresented: $isShowCreateNoteDoneDialog, actions: {
-                            Button("Close", role: .cancel, action: {
-                                isShowDialog = false
-                                self.presentationMode.wrappedValue.dismiss()
-                            })
-                            Button("Edit continue", role: .none, action: {
-                                isShowDialog = false
-                            })
+                            Text("Close").foregroundColor(.white).frame(maxWidth: .infinity, alignment: .center)
+                        }.frame(height: 40.0).background(.red)
+                            .cornerRadius(8)
+                            .padding([.leading, .trailing], 8)
+                            .accessibilityIdentifier("close")
+                            .buttonStyle(BorderlessButtonStyle())
+                        
+                        
+                        Button(action: {
+                            saveNote()
                         }) {
-                            Text("Create note done!")
-                        }
+                            Text(idNote != -1 ? "Update" :"Save").foregroundColor(.white).frame(maxWidth: .infinity, alignment: .center)
+                        }.frame(height: 40.0).background(.blue)
+                            .cornerRadius(8)
+                            .padding([.leading, .trailing], 8)
+                            .buttonStyle(BorderlessButtonStyle())
+                            .alert("Error", isPresented: $isShowDialog, actions: {
+                                Button("OK", role: .cancel, action: {
+                                    isShowDialog = false
+                                })
+                            }) {
+                                Text("Title and content must not empty!")
+                            }
+                            .alert("Success", isPresented: $isShowCreateNoteDoneDialog, actions: {
+                                Button("Close", role: .cancel, action: {
+                                    isShowDialog = false
+                                    self.presentationMode.wrappedValue.dismiss()
+                                })
+                                Button("Edit continue", role: .none, action: {
+                                    isShowDialog = false
+                                })
+                            }) {
+                                Text("Create note done!")
+                            }
+                    }
                     
                 }
             }.environment(\.defaultMinListRowHeight, 20) 

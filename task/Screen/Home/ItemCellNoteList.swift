@@ -23,12 +23,19 @@ struct ItemCellNoteList: View {
     
     var body: some View {
         HStack {
-            Button(action: {
-                print(title)
-                
-            }) {
-                Text(title)
-            }.buttonStyle(BorderlessButtonStyle())
+            GeometryReader { geo in
+                HStack {
+                    NavigationLink(destination: {}, label: {
+                        Text(title).frame(alignment: .center).onTapGesture {
+                            
+                        }
+                    })
+                }.onTapGesture {
+                    
+                }
+            }.onTapGesture {
+                print("----> " + title)
+            }
             Spacer()
             if $isFavorite.wrappedValue {
                 Button(action: {
@@ -47,8 +54,8 @@ struct ItemCellNoteList: View {
                     Image(systemName: "star").foregroundColor(.gray)
                 }.buttonStyle(BorderlessButtonStyle())
             }
-        }.onAppear {
-            
+        }.onTapGesture {
+            print("xxxxxx")
         }
     }
 }
