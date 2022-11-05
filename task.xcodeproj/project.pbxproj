@@ -20,6 +20,8 @@
 		861F36DB290AD75800979DF3 /* UserDefaultManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861F36DA290AD75800979DF3 /* UserDefaultManager.swift */; };
 		864EAAC32909895D00CD979D /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864EAAC22909895D00CD979D /* LoginView.swift */; };
 		864EAAC62909961A00CD979D /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864EAAC52909961A00CD979D /* Constant.swift */; };
+		865AF47E2916076600ACAD8C /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865AF47D2916076600ACAD8C /* RootViewController.swift */; };
+		865AF48029161AAB00ACAD8C /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865AF47F29161AAB00ACAD8C /* AlertManager.swift */; };
 		867D1576290B80B000EFC1EE /* ItemCellNoteList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867D1575290B80B000EFC1EE /* ItemCellNoteList.swift */; };
 		8688902E2903762F00D742D0 /* RandomDogModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8688902D2903762F00D742D0 /* RandomDogModel.swift */; };
 		86BB865C2900451B0054D884 /* MainApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BB865B2900451B0054D884 /* MainApp.swift */; };
@@ -71,6 +73,8 @@
 		861F36DA290AD75800979DF3 /* UserDefaultManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultManager.swift; sourceTree = "<group>"; };
 		864EAAC22909895D00CD979D /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		864EAAC52909961A00CD979D /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		865AF47D2916076600ACAD8C /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
+		865AF47F29161AAB00ACAD8C /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
 		867D1575290B80B000EFC1EE /* ItemCellNoteList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCellNoteList.swift; sourceTree = "<group>"; };
 		8688902D2903762F00D742D0 /* RandomDogModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomDogModel.swift; sourceTree = "<group>"; };
 		86BB86582900451B0054D884 /* task.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = task.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -192,6 +196,8 @@
 			children = (
 				861F36DA290AD75800979DF3 /* UserDefaultManager.swift */,
 				864EAAC52909961A00CD979D /* Constant.swift */,
+				865AF47D2916076600ACAD8C /* RootViewController.swift */,
+				865AF47F29161AAB00ACAD8C /* AlertManager.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -530,6 +536,7 @@
 			files = (
 				864EAAC62909961A00CD979D /* Constant.swift in Sources */,
 				864EAAC32909895D00CD979D /* LoginView.swift in Sources */,
+				865AF47E2916076600ACAD8C /* RootViewController.swift in Sources */,
 				37D3FA55290BB9340017C7A1 /* NoteCreateView.swift in Sources */,
 				867D1576290B80B000EFC1EE /* ItemCellNoteList.swift in Sources */,
 				37EEFF48290B6EA700A36989 /* NoteViewModel.swift in Sources */,
@@ -539,6 +546,7 @@
 				37D3FA64290BD7EC0017C7A1 /* NoteCreateResponse.swift in Sources */,
 				37EEFF46290B6E4500A36989 /* ItemNoteModel.swift in Sources */,
 				86BB8688290047390054D884 /* NetworkManager.swift in Sources */,
+				865AF48029161AAB00ACAD8C /* AlertManager.swift in Sources */,
 				37D3FA62290BD5730017C7A1 /* NoteCreateRequest.swift in Sources */,
 				86BB868B29004CB90054D884 /* LoginViewModel.swift in Sources */,
 				8688902E2903762F00D742D0 /* RandomDogModel.swift in Sources */,
@@ -699,6 +707,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -709,7 +718,6 @@
 				INFOPLIST_FILE = task/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -732,6 +740,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -742,7 +751,6 @@
 				INFOPLIST_FILE = task/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (

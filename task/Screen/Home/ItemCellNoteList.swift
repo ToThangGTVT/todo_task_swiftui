@@ -12,8 +12,8 @@ struct ItemCellNoteList: View {
     @EnvironmentObject var noteViewModel: NoteViewModel
     
     var title: String
-    @State var isFavorite: Bool = false
     var id: Int
+    @State var isFavorite: Bool = false
     
     init(id: Int, title: String, isFavorite: Bool) {
         self.id = id
@@ -25,7 +25,9 @@ struct ItemCellNoteList: View {
         HStack {
             GeometryReader { geo in
                 HStack {
-                    NavigationLink(destination: {}, label: {
+                    NavigationLink(destination: {
+                        Text("des")
+                    }, label: {
                         Text(title).frame(alignment: .center).onTapGesture {
                             
                         }

@@ -16,18 +16,16 @@ struct NoteCreateView: View {
     @State private var content: String = "<pre>Hello World</pre>"
     @State private var title: String = ""
     
-    // State dialog
-    @State private var isShowDialog: Bool = false
-    @State private var isShowCreateNoteDoneDialog: Bool = false
-    
     func saveNote() {
         if title.isEmpty || content.isEmpty {
-            isShowDialog = true
+            AlertManager.share.show(type: .inputIsNotEmpty)
         } else {
             noteViewModel.saveNote(title: title, content: content) {  id in
                 guard let id = id else { return }
                 idNote = id
-                isShowCreateNoteDoneDialog = true
+                AlertManager.share.show(type: .saveSuccess, action1: { alert in
+                    self.presentationMode.wrappedValue.dismiss()
+                })
             }
         }
     }
@@ -35,7 +33,6 @@ struct NoteCreateView: View {
     init() {
         UITableView.appearance().sectionHeaderHeight = .zero
     }
-    
     
     var body: some View {
         GeometryReader { geo in
@@ -65,24 +62,6 @@ struct NoteCreateView: View {
                             .cornerRadius(8)
                             .padding([.leading, .trailing], 8)
                             .buttonStyle(BorderlessButtonStyle())
-                            .alert("Error", isPresented: $isShowDialog, actions: {
-                                Button("OK", role: .cancel, action: {
-                                    isShowDialog = false
-                                })
-                            }) {
-                                Text("Title and content must not empty!")
-                            }
-                            .alert("Success", isPresented: $isShowCreateNoteDoneDialog, actions: {
-                                Button("Close", role: .cancel, action: {
-                                    isShowDialog = false
-                                    self.presentationMode.wrappedValue.dismiss()
-                                })
-                                Button("Edit continue", role: .none, action: {
-                                    isShowDialog = false
-                                })
-                            }) {
-                                Text("Create note done!")
-                            }
                     }
                     
                 }
